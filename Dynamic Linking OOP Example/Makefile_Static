@@ -1,0 +1,14 @@
+# This is a static linking example
+
+main: main.c CarLibInterface.o CarLibInterface.hpp
+	gcc -Wall -o main CarLib.o CarLibInterface.o main.c -lstdc++ 
+
+CarLibInterface.o: CarLibInterface.cpp CarLibInterface.hpp
+	g++ -Wall -c -static CarLibInterface.cpp
+
+CarLib.o: CarLib.cpp CarLib.hpp
+	g++ -Wall -c -static CarLib.cpp
+
+clean:
+	rm *.o main
+
